@@ -21,7 +21,7 @@
 #	aptitude install python3.4 python3.4-matplotlib
 #
 #  Now install sympy from source (or other method)
-PYTHON=python3.4
+PYTHON=python3
 
 all: clean
 	latex sympytexpackage.ins
