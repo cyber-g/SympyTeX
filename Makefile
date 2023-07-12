@@ -35,19 +35,19 @@ docs:
 
 # This builds the example document. The example uses matplotlib (aptitude install python-matplotlib)
 test:
-	pdflatex example.tex
-	${PYTHON} example.sympy
-	pdflatex example.tex
+	cd example && pdflatex example.tex
+	cd example && ${PYTHON} example.sympy
+	cd example && pdflatex example.tex
 
 ctan:	
 	cp README.md README
-	/home/tim/Downloads/ctan/scripts/ctanify/ctanify sympytexpackage.ins README sympytexpackage.pdf example.pdf
+	/home/tim/Downloads/ctan/scripts/ctanify/ctanify sympytexpackage.ins README sympytexpackage.pdf example/example.pdf
 	
 clean:
-	rm -f sympytex.* example.s* rm sympytexpackage.dvi  sympytexpackage.aux 
+	rm -f sympytex.* example/example.s* rm sympytexpackage.dvi  sympytexpackage.aux 
 
 dist:
-	tar -cf SympyTeX.tar sympytex.sty sympytex.py sympytexpackage.ins sympytexpackage.dtx example.tex README TODO Makefile
+	tar -cf SympyTeX.tar sympytex.sty sympytex.py sympytexpackage.ins sympytexpackage.dtx example/example.tex README TODO Makefile
 	gzip -9 SympyTeX.tar
 
 DOCS=/usr/share/doc/latex-sympytex
@@ -60,7 +60,7 @@ deb:	dist
 	cp debian/control debian/DEBIAN
 	mkdir -p debian${DOCS}
 	cp debian/copyright debian${DOCS}
-	cp example.tex debian${DOCS}
+	cp example/example.tex debian${DOCS}
 	find ./debian -type d | xargs chmod 755
 	fakeroot dpkg-deb --build debian
 	mv debian.deb latex-sympytex_1.0-1_all.deb
