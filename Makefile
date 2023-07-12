@@ -25,6 +25,8 @@ PYTHON=python3
 
 all: clean
 	latex sympytexpackage.ins
+	@echo "Creating sympytex.sty and sympytex.py"
+	@echo "Please make sure to appropriately set TEXINPUTS and PYTHONPATH"
 
 docs:
 	rm -f *.sout
