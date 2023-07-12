@@ -97,7 +97,7 @@ def plot(counter, p, format='notprovided', epsmagick=False, **kwargs):
     if (isinstance(p, Plot)):
       p.save(plotfilename)
     else:
-      p.savefig(filename=plotfilename, **kwargs)
+      p.savefig(plotfilename, **kwargs)
     if format != 'notprovided' and epsmagick is True:
       print('Calling Imagemagick to convert plot-%s.%s to EPS' % \
         (counter, format))
